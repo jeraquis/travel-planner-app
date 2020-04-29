@@ -11,7 +11,7 @@ export const getWeather = async(geoResults) => {
         ${weatherKey}`)
     try {
         const weather = await weatherReq.json()
-        weatherInfo(weather)
+        Client.weatherInfo(weather)
     } catch (error) {
         console.log('error', error)
         document.getElementById('error-msg').innerHTML = `<p>"Error: " + ${error}</p>`
@@ -22,6 +22,7 @@ export const getWeather = async(geoResults) => {
 export const weatherInfo = async(results) => {
 
     userDate = document.getElementById('date')
+    location = document.getElementById('location')
     let weatherData = []
 
 
@@ -33,6 +34,7 @@ export const weatherInfo = async(results) => {
 
         if (dataDate = userDate) {
             weatherData = {
+                'location': location,
                 'highTemp': results.data[i].high_temp,
                 'lowTemp': results.data[i].low_temp,
                 'precip': results.data[i].precip,
@@ -44,7 +46,7 @@ export const weatherInfo = async(results) => {
     if (weatherData === null) {
         document.getElementById('error-msg').innerHTML = '<p>Please enter a date within the next 16 days in order to see the weather forecast.</p>'
     } else {
-        weatherPost(weatherData)
+        Client.weatherPost(weatherData)
     }
     
 }
