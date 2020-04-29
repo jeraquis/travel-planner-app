@@ -1,16 +1,18 @@
 
 
 export const getWeather = async(geoResults) => {
-    const latitude = geoResults[0].lat
-    const longitude = geoResults[0].lng
-    const cityname = geoResults[0].name
-    const weatherKey = process.env.weatherbit_key
-    const weatherUrl = 'http://api.weatherbit.io/v2.0/forecast/daily'
+    console.log(geoResults)
+    const latitude = geoResults.geonames[0].lat
+    const longitude = geoResults.geonames[0].lng
+    const cityname = geoResults.geonames[0].name
+//    const weatherKey = process.env.weatherbit_key
+    const weatherKey = '702e7a61323f48ecb3763210ccaff92b'
+    const weatherUrl = 'http://api.weatherbit.io/v2.0/forecast/daily?'
 
-    const weatherReq = await fetch(`${weatherUrl}&lat=${latitude}&lon=${longitude}&units=I&key=
-        ${weatherKey}`)
+    const weatherReq = await fetch(`${weatherUrl}&lat=${latitude}&lon=${longitude}&units=I&key=${weatherKey}`)
     try {
         const weather = await weatherReq.json()
+        console.log(weather)
         Client.weatherInfo(weather)
     } catch (error) {
         console.log('error', error)
@@ -20,9 +22,10 @@ export const getWeather = async(geoResults) => {
 }
 
 export const weatherInfo = async(results) => {
+    console.log(results)
 
-    userDate = document.getElementById('date')
-    location = document.getElementById('location')
+    const userDate = document.getElementById('date').value
+    const location = document.getElementById('location').value
     let weatherData = []
 
 
@@ -52,7 +55,8 @@ export const weatherInfo = async(results) => {
 }
 
 export const weatherPost = async(results) => {
-    await fetch('localhost:8000/posting', {
+    console.log(results)
+    await fetch('http://localhost:8001/posting', {
         method: 'POST',
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify(results)

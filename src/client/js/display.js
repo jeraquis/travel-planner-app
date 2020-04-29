@@ -4,18 +4,21 @@ export const updateUI = async () => {
 
     Client.getData()
     .then(response => {
+        console.log(response)
         Client.extractData(response)
     })
     .then(gotLocation => {
+        console.log(gotLocation)
         Client.getPix(gotLocation)
     })
 }
 
 export const getData = async () => {
-    const data = await fetch ('localhost:8000/getting')
-
+    const data = await fetch ('http://localhost:8001/getting')
+    console.log(data)
     try {
-        dataJson = await data.json()
+        const dataJson = await data.json()
+        console.log(dataJson)
         return dataJson
     } catch (error) {
         console.log('error', error)
@@ -34,7 +37,7 @@ export const extractData = async(extData) => {
 }
 
 export const getPix = async(place) => {
-
+    console.log(place)
     let pic
     const formatPlace = place.replace(' ', '+')
 
