@@ -40,11 +40,14 @@ export const getPix = async() => {
     const pixUrl = 'https://pixabay.com/api/?key='
     
     const pixReq = await fetch(`${pixUrl}${pixApi}&q=${formatPlace}&image_type=photo`)
+    console.log(pixReq)
     try {
-        picUrl = await pixReq.json()
-        pic = picUrl.hits[0].webformatURL
+        console.log(pixReq)
+        const picUrl = await pixReq.json()
+        console.log(picUrl)
+        const pic = picUrl.hits[0].webformatURL
         console.log(pic)
-        document.getElementById('pic').innerHTML(`<img src="${pic}>`)
+        document.getElementById('pic').innerHTML = (`<img src="${pic}">`)
     } catch (error) {
         console.log('error', error)
     }
