@@ -1,4 +1,3 @@
-//import { geoApi } from "Client.geonames"
 
 export const formHandler = async () => {
 
@@ -6,12 +5,4 @@ export const formHandler = async () => {
     const location = rawLocation.replace(' ', '+')
     console.log(location)
     Client.geoApi(location)
-
-
 }
-
-// http://api.geonames.org/searchJSON?q=paris&maxRows=10&username=jeraquis
-
-
-
-
