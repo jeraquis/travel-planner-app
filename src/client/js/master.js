@@ -2,14 +2,11 @@
 
 export const formHandler = async () => {
 
-    const location = document.getElementById('location').value
+    const rawLocation = document.getElementById('location').value
+    const location = rawLocation.replace(' ', '+')
     console.log(location)
-    const formatLocation = location.replace(' ', '+')
-    
-    Client.geoApi(formatLocation)
-    .then( () => {
-        Client.updateUI()
-    })
+    Client.geoApi(location)
+
 
 }
 

@@ -1,5 +1,4 @@
 
-
 export const updateUI = async () => {
 
     Client.getData()
@@ -7,17 +6,15 @@ export const updateUI = async () => {
         console.log(response)
         Client.extractData(response)
     })
-    .then(gotLocation => {
-        console.log(gotLocation)
-        Client.getPix(gotLocation)
+    .then(() => {
+        Client.getPix()
     })
 }
 
 export const getData = async () => {
-    const data = await fetch ('http://localhost:8001/getting')
-    console.log(data)
+    const gotten = await fetch ('http://localhost:8001/getting')
     try {
-        const dataJson = await data.json()
+        const dataJson = await gotten.json()
         console.log(dataJson)
         return dataJson
     } catch (error) {
@@ -27,19 +24,22 @@ export const getData = async () => {
 
 export const extractData = async(extData) => {
 
+//    const location = document.getElementById('location').value
+    console.log(extData.city)
+
+    document.getElementById('city').innerHTML = `<p>${extData.city}</p>`
     document.getElementById('high-temp').innerHTML = `<p>High Temperature: ${extData.highTemp}</p>`
     document.getElementById('low-temp').innerHTML = `<p>Low Temperature: ${extData.lowTemp}</p>`
-    document.getElementById('precip').innerHTML = `<p>${extData.precip}</p>`
-    document.getElementById('description').innerHTML = `<p>${extData.desc}</p>`
-    document.getElementById('location').innerHTML = `<p>${extData.location}</p>`
+    document.getElementById('precip').innerHTML = `<p>Precipitation: ${extData.precip}in.</p>`
+    document.getElementById('description').innerHTML = `<p>Weather description: ${extData.desc}</p>`
 
-    return extData.location
+//    return extData.location
 }
 
-export const getPix = async(place) => {
-    console.log(place)
-    let pic
-    const formatPlace = place.replace(' ', '+')
+export const getPix = async() => {
+
+    const location = document.getElementById('location').value
+    const formatPlace = location.replace(' ', '+')
 
     // Pixabay API
     const pixApi = process.env.pix_key
@@ -49,11 +49,12 @@ export const getPix = async(place) => {
     try {
         picUrl = await pixReq.json()
         pic = picUrl.hits[0].webformatURL
+        console.log(pic)
+        document.getElementById('pic').innerHTML(`<img src="${pic}>`)
     } catch (error) {
         console.log('error', error)
     }
 
-    document.getElementById('pic').innerHTML(`<img src="${pic}>`)
 
 // https://pixabay.com/api/?key=16238623-0aadc104a7cd792f4fc412c99&q=yellow+flowers&image_type=photo
 }

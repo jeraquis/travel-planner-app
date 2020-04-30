@@ -27,11 +27,13 @@ data = {}
 
 app.post('/posting', (req, res) => {
     data = req
+    console.log(data.body)
     console.log('posted')
     res.send('posted')
 })
 
 app.get('/getting', (req, res) => {
     console.log('getting')
-    res.send(data)
+    console.log(data.body)
+    res.send(data.body)
 })

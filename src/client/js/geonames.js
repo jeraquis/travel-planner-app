@@ -1,6 +1,4 @@
 
-
-
 export const geoApi = async(input) => {
     console.log(input)
     const geoUser = process.env.geo_user
@@ -14,6 +12,3 @@ export const geoApi = async(input) => {
         console.log('error', error)
     }
 }
-
-
-
