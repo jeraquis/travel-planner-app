@@ -38,14 +38,23 @@ export const weatherInfo = async(results) => {
         }
     }
 
-    if (weatherData === null) {
+    if (weatherData.highTemp === undefined) {
         document.getElementById('error-msg').innerHTML = '<p>Please enter a date within the next 16 days in order to see the weather forecast.</p>'
+        document.getElementById('city').innerHTML = `<p>${results.city_name}</p>`
+        const weatherTest = document.getElementById('high-temp').value
+        console.log(weatherTest)
+        if (weatherTest != undefined) {
+            Client.weatherClear()
+        }
+        Client.getPix()
     } else {
         Client.weatherPost(weatherData)
     }
 }
 
 export const weatherPost = async(results) => {
+
+
     await fetch('http://localhost:8001/posting', {
         method:'POST',
         credentials: 'same-origin',
@@ -58,4 +67,13 @@ export const weatherPost = async(results) => {
     .then( () => {
         Client.updateUI()
     })
+}
+
+export const weatherClear = () => {
+    document.getElementById('city').innerHTML = ''
+    document.getElementById('high-temp').innerHTML = ''
+    document.getElementById('low-temp').innerHTML = ''
+    document.getElementById('precip').innerHTML = ''
+    document.getElementById('description').innerHTML = ''
+
 }

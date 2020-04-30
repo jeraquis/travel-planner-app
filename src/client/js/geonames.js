@@ -7,7 +7,37 @@ export const geoApi = async(input) => {
     try {
         const geoOutput = await geoData.json()
         Client.getWeather(geoOutput)
+        Client.getCountryInfo(geoOutput)
     } catch (error) {
         console.log('error', error)
     }
+}
+
+export const getCountryInfo = async(geoInfo) => {
+    const country = geoInfo.geonames[0].countryCode
+
+    if (country != 'US') {
+        const apiUrl = `https://restcountries.eu/rest/v2/name/${country}?fullText=true`
+
+        const countryApi = await fetch(apiUrl)
+        try {
+            const countryInfo = await countryApi.json()
+            console.log(countryInfo)
+            Client.countryDisplay(countryInfo)
+        } catch (error) {
+            console.log('error', error)
+        }
+    } else {
+        const state = geoInfo.geonames[0].adminName1
+        Client.statePic(state)
+
+    }
+}
+
+export const countryClear = () => {
+    document.getElementById('country-name').innerHTML = ''
+    document.getElementById('currency').innerHTML = ''
+    document.getElementById('population').innerHTML = ''
+    document.getElementById('language').innerHTML = ''
+    document.getElementById('flag').innerHTML = ''
 }
