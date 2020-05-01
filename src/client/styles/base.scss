@@ -1,0 +1,65 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&family=Poppins&display=swap');
+
+$basic-font: 'Poppins', sans-serif;
+$text-size: 20px;
+$header-font: 'Jost', sans-serif;
+
+$back-color: white;
+$text-color: black;
+$head-color: #2B4545;
+$highlight-color: #508080;
+
+$shadowbox: 0 4px 8px 0 rgba(0, 0, 0, 1);
+
+body {
+    font-family: $basic-font;
+    font-size: $text-size;
+    background-color: $back-color;
+    color: $text-color;
+
+
+}
+
+
+
+
+h1, h2, h3 {
+    font-family: $header-font;
+    color: $head-color;
+}
+
+
+.container {
+    display:grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: minmax(40px, auto);
+    grid-template-areas: 
+        "app"
+        "weather"
+        "country";
+}
+
+.box {
+    margin: 20px 5% 20px 5%;
+    border: 2px solid $highlight-color;
+    box-shadow: $shadowbox;
+    padding: 20px;
+}
+
+
+@media (min-width:900px){
+    .container {
+        margin: 0 5% 0 5%;
+        grid-template-columns: repeat(3, 1fr);
+//            grid-template-rows: 250px;
+        grid-template-areas: 
+            "app app app"
+            "weather weather country"
+            "weather weather country";
+        border: 2px solid $highlight-color;
+        box-shadow: $shadowbox;
+        
+
+    }
+}

@@ -1,0 +1,21 @@
+@import './base.scss';
+
+.country {
+    grid-area: country;
+
+}
+
+#country-name {
+    font-family: $header-font;
+    color: $head-color;
+    font-size: 30px;
+}
+
+#flag {
+
+    &:img {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+}

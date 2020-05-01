@@ -1,0 +1,21 @@
+@import './base.scss';
+
+.weather {
+    grid-area: weather;
+
+}
+
+#city, #state {
+    font-family: $header-font;
+    color: $head-color;
+    font-size: 30px;
+}
+
+#pic {
+
+    &:img {
+        max-height: 100%;
+        max-width: 100%;
+        display: block;
+    }
+}

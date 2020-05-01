@@ -42,8 +42,7 @@ export const weatherInfo = async(results) => {
         document.getElementById('error-msg').innerHTML = '<p>Please enter a date within the next 16 days in order to see the weather forecast.</p>'
         document.getElementById('city').innerHTML = `<p>${results.city_name}</p>`
         const weatherTest = document.getElementById('high-temp').value
-        console.log(weatherTest)
-        if (weatherTest != undefined) {
+        if (weatherTest === undefined) {
             Client.weatherClear()
         }
         Client.getPix()

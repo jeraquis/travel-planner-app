@@ -22,19 +22,19 @@ export const getCountryInfo = async(geoInfo) => {
         const countryApi = await fetch(apiUrl)
         try {
             const countryInfo = await countryApi.json()
-            console.log(countryInfo)
             Client.countryDisplay(countryInfo)
         } catch (error) {
             console.log('error', error)
         }
     } else {
         const state = geoInfo.geonames[0].adminName1
+        Client.countryClear()
         Client.statePic(state)
-
+        
     }
 }
 
-export const countryClear = () => {
+export const countryClear = async () => {
     document.getElementById('country-name').innerHTML = ''
     document.getElementById('currency').innerHTML = ''
     document.getElementById('population').innerHTML = ''

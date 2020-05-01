@@ -1,6 +1,7 @@
 import {formHandler} from './js/master'
 import {geoApi} from './js/geonames'
 import {getCountryInfo} from './js/geonames'
+import {countryClear} from './js/geonames'
 import {getWeather} from './js/weatherbit'
 import {weatherInfo} from './js/weatherbit'
 import {weatherPost} from './js/weatherbit'
@@ -14,13 +15,14 @@ import {countryPic} from './js/display'
 import {statePic} from './js/display'
 
 import './styles/base.scss'
+import './styles/app.scss'
+import './styles/country-info.scss'
+import './styles/weather.scss'
 
 document.getElementById('submit').addEventListener('click', formHandler)
 
 export {
     formHandler, geoApi, getWeather, weatherInfo, weatherPost, updateUI,
     getData, extractData, getPix, getCountryInfo, countryDisplay,
-    countryPic, statePic, weatherClear
+    countryPic, statePic, weatherClear, countryClear
 }
-
-

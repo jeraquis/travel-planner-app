@@ -5,44 +5,49 @@
         <meta charset="utf-8">
         <title>Travel Planner</title>
 
-
     </head>
 
     <body>
-
-        <div id="app">
-            <div label="app-description">Travel Planner</div>
-            <div class="user-input">
-                <input type="text" id="location">
-                <label for="location">Enter a city name</label>
+        <!-- Top-level grid */-->
+        <div class="container">
+            <!-- Nested grid for user interface -->
+            <div class="app box">
+                <div id="app-description">
+                    <h1>Travel Planner</h1>
+                    <h2>Enter a city and date of travel.</h2> 
+                    <p>If the trip is within the next 16 days, a weather forecast will be displayed below.</p>
+                    <p>If you're traveling outside of the country, we'll show you some useful information about your destination.</p>
+                </div>
+                <div class="user-input">
+                    <input type="text" id="location"><br>
+                    <label for="location">Destination</label>
+                </div>
+                <div class="user-input">
+                    <input type="date" id="date" value="2020-01-01"><br>
+                    <label for="date">Date of trip</label>
+                </div>
+                <div class="user-input">
+                    <button id="submit">Submit</button>
+                </div>
             </div>
-            <div class="user-input">
-                <input type="date" id="date">
-                <label for="date">Date of trip</label>
-                <p>If date of trip is within 16 days, weather forecast will be displayed below.</p>
+            <div class="weather box">
+                <div id="error-msg"></div>
+                <div id="city"></div>
+                <div id="state"></div>
+                <div id="high-temp"></div>
+                <div id="low-temp"></div>
+                <div id="precip"></div>
+                <div id="description"></div>
+                <div id="pic"></div>
             </div>
-            <input type="submit" id="submit" value="Submit">
-
-        </div>
-        <div id="output">
-            <div id="error-msg"></div>
-            <div id="city"></div>
-            <div id="state"></div>
-            <div id="pic"></div>
-            <div id="high-temp"></div>
-            <div id="low-temp"></div>
-            <div id="precip"></div>
-            <div id="description"></div>
-            <div id="country">
+            <div class="country box">
                 <div id="country-name"></div>
                 <div id="language"></div>
                 <div id="currency"></div>
                 <div id="population"></div>
                 <div id="flag"></div>
             </div>
-
         </div>
-
     </body>
 
     <footer>

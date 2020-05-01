@@ -29,6 +29,8 @@ export const extractData = async(extData) => {
         document.getElementById('low-temp').innerHTML = `<p>Low Temperature: ${extData.lowTemp}</p>`
         document.getElementById('precip').innerHTML = `<p>Precipitation: ${extData.precip}in.</p>`
         document.getElementById('description').innerHTML = `<p>Weather description: ${extData.desc}</p>`
+    } else {
+        Client.weatherClear()
     }
 }
 
@@ -48,7 +50,7 @@ export const getPix = async() => {
             Client.countryPic()
         } else {
             const pic = picUrl.hits[0].webformatURL
-            document.getElementById('pic').innerHTML = `<img src="${pic}">`
+            document.getElementById('pic').innerHTML = `<img src="${pic}" width="300">`
         }
     } catch (error) {
         console.log('error', error)
@@ -67,7 +69,7 @@ export const countryDisplay = async(countryData) => {
     document.getElementById('currency').innerHTML = `<p>Currency: ${currency}</p>`
     document.getElementById('population').innerHTML = `<p>Population: ${population}`
     document.getElementById('language').innerHTML = `<p>Language: ${language}`
-    document.getElementById('flag').innerHTML = `<img src="${flag}">`
+    document.getElementById('flag').innerHTML = `<img src="${flag}" width="200">`
 }
 
 export const countryPic = async() => {
@@ -87,7 +89,7 @@ export const countryPic = async() => {
             try {
                 const picUrl = await pixReq.json()
                 const pic = picUrl.hits[0].webformatURL
-                document.getElementById('pic').innerHTML = `<img src="${pic}">`
+                document.getElementById('pic').innerHTML = `<img src="${pic}" width="300">`
         
             } catch (error) {
                 console.log('error', error)
@@ -108,7 +110,7 @@ export const statePic = async(state) => {
     try {
         const picUrl = await pixReq.json()
         const pic = picUrl.hits[0].webformatURL
-        document.getElementById('pic').innerHTML = `<img src="${pic}">`
+        document.getElementById('pic').innerHTML = `<img src="${pic}" width="300">`
         document.getElementById('state').innerHTML = `<p>${state}</p>`
     } catch (error) {
         console.log('error', error)
