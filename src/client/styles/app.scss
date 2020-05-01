@@ -15,7 +15,6 @@ input {
 }
 
 button {
-        
     border: none;
     outline: 0;
     display: inline-block;
@@ -30,5 +29,4 @@ button {
     &:hover {
         box-shadow: $shadowbox;
     }
-
 }
