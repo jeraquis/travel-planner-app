@@ -8,3 +8,4 @@ The app searches Pixabay for a picture of the city. If that doesn't return anyth
 
 Styles use grid and sass syntax, including sass objects and the ampersand function. Layout is responsive.
 
+Test file exists with two tests that pass. Service workers are installed.
